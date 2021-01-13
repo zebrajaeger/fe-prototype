@@ -573,6 +573,16 @@ gulp.task('noop', (cb) => {
     log.info('NOOP');
     cb();
 });
+gulp.task('pl', (cb) => {
+//    const pl = require('@pattern-lab/core');
+
+
+    const config = require('./patternlab-config.json');
+    const     patternlab = require('@pattern-lab/core')(config);
+    const buildResult = patternlab.build(() => {});
+    return buildResult;
+});
+
 
 // default
 exports.default = gulp.series('clean-all', 'build-all', 'copy-all');

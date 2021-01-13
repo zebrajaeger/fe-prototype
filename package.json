@@ -9,20 +9,29 @@
     "fe:serve": "gulp serve"
   },
   "keywords": [
-    "frontend",
-    "prototype",
-    "scss",
+    "Frontend",
+    "Prototype",
+    "Scss",
     "css",
     "js",
-    "markdown"
+    "Markdown",
+    "Node",
+    "Gulp",
+    "Browsersync",
+    "Pattern Lab"
   ],
   "author": "Lars Brandt",
   "license": "MIT",
+  "engines": {
+    "node": ">=14.14.0"
+  },
   "dependencies": {
     "@babel/core": "^7.11.6",
     "@babel/plugin-proposal-class-properties": "^7.10.4",
     "@babel/plugin-proposal-private-methods": "^7.12.1",
     "@babel/preset-env": "^7.11.5",
+    "@pattern-lab/core": "^5.13.3",
+    "@pattern-lab/uikit-workshop": "^5.13.3",
     "autoprefixer": "^10.0.1",
     "browser-sync": "^2.26.12",
     "cssnano": "^4.1.10",

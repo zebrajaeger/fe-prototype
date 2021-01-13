@@ -1,6 +1,7 @@
 node_modules
 yarn-error.log
 local-config.json
+dependencyGraph.json
 
 dist
 dist2
