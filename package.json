@@ -1,0 +1,48 @@
+{
+  "name": "fe-prototype",
+  "version": "1.0.0",
+  "description": "Prototype for frontend builds",
+  "main": "index.js",
+  "scripts": {
+    "gulp": "gulp",
+    "fe:build": "gulp",
+    "fe:serve": "gulp serve"
+  },
+  "keywords": [
+    "frontend",
+    "prototype",
+    "scss",
+    "css",
+    "js",
+    "markdown"
+  ],
+  "author": "Lars Brandt",
+  "license": "MIT",
+  "dependencies": {
+    "@babel/core": "^7.11.6",
+    "@babel/plugin-proposal-class-properties": "^7.10.4",
+    "@babel/plugin-proposal-private-methods": "^7.12.1",
+    "@babel/preset-env": "^7.11.5",
+    "autoprefixer": "^10.0.1",
+    "browser-sync": "^2.26.12",
+    "cssnano": "^4.1.10",
+    "gulp": "^4.0.2",
+    "gulp-babel": "^8.0.0",
+    "gulp-clean": "^0.4.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-markdown-pdf": "^8.0.0",
+    "gulp-notify": "^3.2.0",
+    "gulp-plumber": "^1.2.1",
+    "gulp-postcss": "^9.0.0",
+    "gulp-rename": "^2.0.0",
+    "gulp-sass": "^4.1.0",
+    "gulp-sourcemaps": "^2.6.5",
+    "gulp-uglify-es": "^2.0.0",
+    "gulp-util": "^3.0.8",
+    "gulplog": "^1.0.0",
+    "is-port-reachable": "^3.0.0",
+    "node-notifier": "^8.0.0",
+    "portscanner": "^2.2.0",
+    "postcss": "^8.1.1"
+  }
+}

@@ -1,0 +1,150 @@
+{
+  "css": {
+    "app": {
+      "src": [
+        "src/css/*.scss"
+      ],
+      "target": {
+        "name": {
+          "processed": "app.css",
+          "minified": "app.min.css",
+          "mapPostfix": ".map"
+        },
+        "dist": "./dist",
+        "path": [
+          "./dist2",
+          "./dist3"
+        ]
+      },
+      "develop": {
+        "maskUrl": [
+          "/",
+          "/yo/",
+          "/webapp/opencms/en/system/modules/de.zebrajaeger.fe-prototype/resources/css/"
+        ],
+        "watch": [
+          "src/css/**/*.scss",
+          "src/css/**/*.css"
+        ]
+      }
+    },
+    "vendor": {
+      "src": [
+        "src/vendor-css/*.scss",
+        "!src/vendor-css/_*.scss"
+      ],
+      "target": {
+        "name": {
+          "processed": "vendor.css",
+          "minified": "vendor.min.css",
+          "mapPostfix": ".map"
+        },
+        "dist": "dist",
+        "path": [
+          "./dist2",
+          "./dist3"
+        ]
+      },
+      "develop": {
+        "maskUrl": [
+          "/",
+          "/webapp/opencms/en/system/modules/de.zebrajaeger.fe-prototype/resources/css/"
+        ],
+        "watch": [
+          "src/vendor-css/**/*.scss",
+          "src/vendor-css/**/*.css"
+        ]
+      }
+    }
+  },
+  "js": {
+    "app": {
+      "src": [
+        "src/js/**.js"
+      ],
+      "target": {
+        "name": {
+          "processed": "app.js",
+          "minified": "app.min.js",
+          "mapPostfix": ".map"
+        },
+        "dist": "dist",
+        "path": [
+          "./dist2",
+          "./dist3"
+        ]
+      },
+      "develop": {
+        "maskUrl": [
+          "/",
+          "/webapp/opencms/en/system/modules/de.zebrajaeger.fe-prototype/resources/js/"
+        ],
+        "watch": [
+          "src/js/**/*.js",
+          "src/js/**/*.json"
+        ]
+      }
+    },
+    "vendor": {
+      "src": [
+        "src/vendor-js/**/*.js"
+      ],
+      "target": {
+        "name": {
+          "processed": "vendor.js",
+          "minified": "vendor.min.js",
+          "mapPostfix": ".map"
+        },
+        "dist": "dist",
+        "path": [
+          "./dist2",
+          "./dist3"
+        ]
+      },
+      "develop": {
+        "maskUrl": [
+          "/",
+          "/webapp/opencms/en/system/modules/de.zebrajaeger.fe-prototype/resources/js/"
+        ],
+        "watch": [
+          "src/vendor-js/**/*.js"
+        ]
+      }
+    }
+  },
+  "clean": {
+    "src": ["./dist", "./dist2", "./dist3" ]
+  },
+  "develop": {
+    "proxy": {
+      "connector": {
+        "host": "127.0.0.1",
+        "port": 4000
+      },
+      "target": {
+        "host": "127.0.0.1",
+        "port": 80
+      },
+      "reachableCheck": {
+        "enabled": true,
+        "interval": 500
+      }
+    },
+    "ui": {
+      "port": 4001
+    }
+  },
+  "doc": {
+    "workDir": "doc",
+    "src": [
+      "doc/**/*.md"
+    ],
+    "target": {
+      "dist": "dist",
+      "path": [
+        "./dist2",
+        "./dist3"
+      ]
+    }
+  }
+}
