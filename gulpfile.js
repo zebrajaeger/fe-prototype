@@ -10,6 +10,7 @@ const log = require('gulplog');
 const plumber = require('gulp-plumber');
 const notify = require('gulp-notify');
 const notifier = require('node-notifier');
+const deepmerge = require('deepmerge');
 const {copyFiles, deleteFiles, fileNames} = require('./util');
 
 const concat = require('gulp-concat');
@@ -36,11 +37,11 @@ const portscanner = require('portscanner')
 const markdownPdf = require('gulp-markdown-pdf');
 
 // config
-const config = require('./default-config.json');
+const defaultConfigPath = path.resolve(__dirname, 'default-config.json');
 const localConfigPath = path.resolve(__dirname, 'local-config.json');
-if (fs.existsSync(localConfigPath)) {
-
-}
+const config = (fs.existsSync(localConfigPath))
+    ? deepmerge(require(defaultConfigPath), require(localConfigPath))
+    : require(defaultConfigPath);
 
 const target = {
     fs: {

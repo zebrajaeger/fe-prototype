@@ -34,6 +34,9 @@ Execute another task. Example:
 ```bash
 yarn run gulp clean-all
 ```
+## Config
+- default-config.json <- always used
+- local-config.json <- overwrite default values (for user specific stuff)
 
 ### CSS
 
