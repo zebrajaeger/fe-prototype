@@ -151,6 +151,12 @@ config.js.vendor.develop.maskUrl.forEach(maskUrl => {
         route: maskUrl + config.js.vendor.target.name.minified + config.js.vendor.target.name.mapPostfix
     });
 });
+config.html.develop.maskUrl.forEach(maskUrl => {
+    target.web.map.push({
+        dir: config.html.target.dist,
+        route: maskUrl
+    });
+});
 
 target.fs.app.css.all = [
     target.fs.app.css.processed,
@@ -412,6 +418,16 @@ gulp.task('clean-vendor-js', (cb) => {
     cb();
 });
 
+// ==================== PATTERNLAB ====================
+gulp.task('build-patternlab', (cb) => {
+    const config = require('./patternlab-config.json');
+    const patternlab = require('@pattern-lab/core')(config);
+    const buildResult = patternlab.build(() => {
+    });
+    return buildResult;
+});
+
+
 // ==================== CLEAN ====================
 gulp.task('clean-dist', () => {
     return gulp
@@ -517,12 +533,15 @@ gulp.task('watch', async cb => {
     console.log('WATCHING app.js:', config.js.app.develop.watch);
     console.log('WATCHING vendor.css:', config.css.vendor.develop.watch);
     console.log('WATCHING vendor.js:', config.js.vendor.develop.watch);
+    console.log('WATCHING html:', config.html.develop.watch);
+    console.log('WATCHING doc:', config.doc.develop.watch);
 
     gulp.watch(config.css.app.develop.watch, gulp.series('build-app-css', 'copy-app-css', 'reload'));
     gulp.watch(config.css.vendor.develop.watch, gulp.series('build-vendor-css', 'copy-vendor-css', 'reload'));
     gulp.watch(config.js.app.develop.watch, gulp.series('build-app-js', 'copy-app-js', 'reload'));
     gulp.watch(config.js.vendor.develop.watch, gulp.series('build-vendor-js', 'copy-vendor-js', 'reload'));
-    gulp.watch(config.doc.src, gulp.series('build-doc'));
+    gulp.watch(config.doc.develop.watch, gulp.series('build-doc'));
+    gulp.watch(config.html.develop.watch, gulp.series('build-patternlab', 'reload'));
 
     // check for proxy target available. Auto restart browser sync due to unreachable problems
     let isReachable = 'initial';
@@ -556,7 +575,7 @@ gulp.task('build-vendor-css', gulp.parallel('build-vendor-css-unminified', 'buil
 gulp.task('build-vendor-js', gulp.parallel('build-vendor-js-unminified', 'build-vendor-js-minified'));
 gulp.task('build-vendor', gulp.parallel('build-vendor-css', 'build-vendor-js'));
 
-gulp.task('build-all', gulp.parallel('build-app', 'build-vendor', 'build-doc'));
+gulp.task('build-all', gulp.parallel('build-app', 'build-vendor', 'build-doc', 'build-patternlab'));
 
 // copy
 gulp.task('copy-all', gulp.parallel('copy-app-css', 'copy-app-js', 'copy-vendor-css', 'copy-vendor-js'));
@@ -572,15 +591,6 @@ gulp.task('serve', gulp.series('develop'));
 gulp.task('noop', (cb) => {
     log.info('NOOP');
     cb();
-});
-gulp.task('pl', (cb) => {
-//    const pl = require('@pattern-lab/core');
-
-
-    const config = require('./patternlab-config.json');
-    const     patternlab = require('@pattern-lab/core')(config);
-    const buildResult = patternlab.build(() => {});
-    return buildResult;
 });
 
 

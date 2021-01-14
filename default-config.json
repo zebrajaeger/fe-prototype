@@ -2,7 +2,8 @@
   "css": {
     "app": {
       "src": [
-        "src/css/*.scss"
+        "src/css/*.scss",
+        "src/html/_patterns/**/*.scss"
       ],
       "target": {
         "name": {
@@ -24,7 +25,8 @@
         ],
         "watch": [
           "src/css/**/*.scss",
-          "src/css/**/*.css"
+          "src/css/**/*.css",
+          "src/html/_patterns/**/*.scss"
         ]
       }
     },
@@ -112,8 +114,25 @@
       }
     }
   },
+  "html": {
+    "$": "main config is in patternlab-config.json",
+    "target": {
+      "dist": "dist"
+    },
+    "develop": {
+      "maskUrl": ["patternlab"],
+      "watch": [
+        "patternlab-config.json",
+        "src/html/**/*"
+      ]
+    }
+  },
   "clean": {
-    "src": ["./dist", "./dist2", "./dist3" ]
+    "src": [
+      "./dist",
+      "./dist2",
+      "./dist3"
+    ]
   },
   "develop": {
     "proxy": {
@@ -144,6 +163,11 @@
       "path": [
         "./dist2",
         "./dist3"
+      ]
+    },
+    "develop": {
+      "watch": [
+        "doc/**/*"
       ]
     }
   }
