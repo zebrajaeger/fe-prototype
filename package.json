@@ -48,12 +48,15 @@
     "gulp-rename": "^2.0.0",
     "gulp-sass": "^4.1.0",
     "gulp-sourcemaps": "^2.6.5",
+    "gulp-stylelint": "^13.0.0",
     "gulp-uglify-es": "^2.0.0",
     "gulp-util": "^3.0.8",
     "gulplog": "^1.0.0",
     "is-port-reachable": "^3.0.0",
     "node-notifier": "^8.0.0",
     "portscanner": "^2.2.0",
-    "postcss": "^8.1.1"
+    "postcss": "^8.1.1",
+    "stylelint": "^13.8.0",
+    "stylelint-config-standard": "^20.0.0"
   }
 }

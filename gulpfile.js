@@ -20,9 +20,10 @@ const rename = require('gulp-rename');
 
 // css specific
 const sass = require('gulp-sass');
-const postcss = require('gulp-postcss')
-const autoprefixer = require('autoprefixer')
-const cssnano = require('cssnano')
+const postcss = require('gulp-postcss');
+const autoprefixer = require('autoprefixer');
+const cssnano = require('cssnano');
+const stylelint = require('gulp-stylelint');
 
 // js specific
 const babel = require('gulp-babel');
@@ -214,6 +215,12 @@ gulp.task('build-app-css-unminified', () => {
         .pipe(plumber(onError))
         .pipe(sourcemaps.init())
 
+        .pipe(stylelint({
+            reporters: [
+                {formatter: 'string', console: true}
+            ]
+        }))
+
         .pipe(sass().on('error', sass.logError))
         .pipe(postcss([autoprefixer()]))
         .pipe(concat(config.css.app.target.name.processed))
@@ -227,6 +234,12 @@ gulp.task('build-app-css-minified', () => {
         .src(config.css.app.src)
         .pipe(plumber(onError))
         .pipe(sourcemaps.init())
+
+        .pipe(stylelint({
+            reporters: [
+                {formatter: 'string', console: true}
+            ]
+        }))
 
         .pipe(sass().on('error', sass.logError))
         .pipe(postcss([autoprefixer(), cssnano()]))
