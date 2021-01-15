@@ -32,6 +32,7 @@
     "@babel/preset-env": "^7.11.5",
     "@pattern-lab/core": "^5.13.3",
     "@pattern-lab/uikit-workshop": "^5.13.3",
+    "@zebrajaeger/gulp-eslint": "^7.17.0",
     "autoprefixer": "^10.0.1",
     "browser-sync": "^2.26.12",
     "cssnano": "^4.1.10",

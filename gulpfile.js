@@ -27,6 +27,7 @@ const cssnano = require('cssnano')
 // js specific
 const babel = require('gulp-babel');
 const uglify = require('gulp-uglify-es').default;
+const eslint = require('@zebrajaeger/gulp-eslint');
 
 // develop
 const browserSync = require('browser-sync').create();
@@ -315,7 +316,13 @@ gulp.task('build-app-js-unminified', () => {
         .pipe(plumber(onError))
         .pipe(sourcemaps.init())
 
-        .pipe(babel())
+        .pipe(eslint())
+        .pipe(eslint.format())
+        .pipe(eslint.failAfterError())
+
+        .pipe(babel({
+            presets: ['@babel/env']
+        }))
         .pipe(concat(config.js.app.target.name.processed))
 
         .pipe(sourcemaps.write('.'))
@@ -327,6 +334,10 @@ gulp.task('build-app-js-minified', () => {
         .src(config.js.app.src)
         .pipe(plumber(onError))
         .pipe(sourcemaps.init())
+
+        .pipe(eslint())
+        .pipe(eslint.format())
+        .pipe(eslint.failAfterError())
 
         .pipe(babel({
             presets: ['@babel/env']
