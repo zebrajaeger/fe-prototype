@@ -149,6 +149,11 @@
         "interval": 500
       }
     },
+    "browser": {
+      "$": "see https://browsersync.io/docs/options",
+      "open": "extern",
+      "startPath": "patternlab/index.html"
+    },
     "ui": {
       "port": 4001
     }

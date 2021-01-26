@@ -519,7 +519,9 @@ gulp.task('watch', async cb => {
             port: config.develop.ui.port
         },
 
-        open: false,
+        open: config.develop.browser.open,
+        startPath: config.develop.browser.startPath,
+
         online: false,
         ghostMode: {
             clicks: true,
